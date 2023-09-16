@@ -1,0 +1,25 @@
+{
+  "name": "template-book-server",
+  "version": "1.0.0",
+  "description": "Template Book App Server using MERN",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahriarshamit/template-book-server.git"
+  },
+  "keywords": [
+    "MongoDB",
+    "Express",
+    "React",
+    "Node"
+  ],
+  "author": "Shahriar",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/shahriarshamit/template-book-server/issues"
+  },
+  "homepage": "https://github.com/shahriarshamit/template-book-server#readme"
+}
