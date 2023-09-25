@@ -4,8 +4,7 @@
     "description": "Template Book App Server using MERN",
     "main": "index.js",
     "scripts": {
-        "test": "nodemon ./src/index.js",
-        "start": "node src\/index.js"
+        "dev": "nodemon ./src/index.js"
     },
     "repository": {
         "type": "git",
