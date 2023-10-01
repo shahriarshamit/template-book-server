@@ -66,12 +66,50 @@ const createNewBook = async function (request, response) {
         return response.status(200).json({status: 'success', data: data});
     } catch (error) {
         console.log(error);
-        return response.status(500).json({status: 'error', data: 'An error occured while fetching books details'});
+        return response.status(500).json({status: 'error', data: 'An error occured while creating books details'});
+    }
+};
+
+const updateExistingBook = async function (request, response) {
+    try {
+        const bookDetails = request.body;
+        if (!bookDetails.bookId) {
+            return response.status(500).json({status: 'error', data: 'Book ID is empty.'});
+        } else if (!bookDetails.title) {
+            return response.status(500).json({status: 'error', data: 'Book title is empty.'});
+        } else if (!bookDetails.slug) {
+            return response.status(500).json({status: 'error', data: 'Book slug is empty.'});
+        } else if (!bookDetails.stars) {
+            return response.status(500).json({status: 'error', data: 'Book star is empty.'});
+        } else if (!bookDetails.description) {
+            return response.status(500).json({status: 'error', data: 'Book description is empty.'});
+        } else if (!bookDetails.category) {
+            return response.status(500).json({status: 'error', data: 'Book category is empty.'});
+        } else if (!bookDetails.thumbnail) {
+            return response.status(500).json({status: 'error', data: 'Book thumbnail is empty.'});
+        }
+        const updateBook = {
+            title: bookDetails.title,
+            slug: bookDetails.slug,
+            stars: bookDetails.stars,
+            description: bookDetails.description,
+            category: bookDetails.category,
+            thumbnail: bookDetails.thumbnail
+        };
+        const data = await BookModel.findByIdAndUpdate(bookDetails.bookId, updateBook);
+        if (!data) {
+            return response.status(500).json({status: 'error', data: 'Book update failed.'});
+        }
+        return response.status(200).json({status: 'success', data: data});
+    } catch (error) {
+        console.log(error);
+        return response.status(500).json({status: 'error', data: 'An error occured while updating books details'});
     }
 };
 
 module.exports = {
     getAllBooks,
     getSingleBook,
-    createNewBook
+    createNewBook,
+    updateExistingBook
 };
